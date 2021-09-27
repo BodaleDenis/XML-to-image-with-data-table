@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<data>
+    <company name="Company1">
+        <rank>3</rank>
+        <year>1980</year>
+        <employee>15600</employee>
+        <country name="Romania" direction="E"/>
+        <country name="Switzerland" direction="W"/>
+    </company>
+    <company name="Company2">
+        <rank>5</rank>
+        <year>1897</year>
+        <employee>139870</employee>
+        <country name="Germany" direction="N"/>
+    </company>
+    <company name="Company3">
+        <rank>98</rank>
+        <year>2019</year>
+        <employee>136</employee>
+        <country name="Canada" direction="W"/>
+    </company>
+</data>
