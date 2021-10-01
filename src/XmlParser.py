@@ -23,19 +23,33 @@ class XmlParser:
         children_tag_value = (children_tag, children_value)
         return children_tag_value
 
-    def get_values_of_child_node(self, index: int):
-        node = self.parser[index]
-        elements = []
-        for element in node:
-            element_value_tag = (element.tag, element.text)
-            elements.append(element_value_tag)
-        return elements
+    def format_atrib_data(self, key_values, dictionary):
+        str_value = str()
+        for key in key_values:
+            str_value += dictionary[key] + " "
+        return str_value
+
+    def extract_elements_data(self):
+        elements_value = list()
+        elements_tag = list()
+        elements_dict = dict()
+
+        for node in self.parser:
+            for element in node:
+                elements_tag.append(element.tag)
+                if element.attrib:
+                    elements_value.append(
+                        self.format_atrib_data(element.attrib.keys(), element.attrib)
+                    )
+                else:
+                    elements_value.append(element.text)
+        print(elements_tag)
+        print(elements_value)
+        for i, j in zip(elements_tag, elements_value):
+            elements_dict.setdefault(i, []).append(j)
+        return elements_dict
 
 
 # Driver code
-xmlparser = XmlParser("test/dummy.xml")
-# print(len(xmlparser.parser))
-print(xmlparser.get_xml_root_name())
-print(xmlparser.get_xml_root_value())
-print(xmlparser.get_node_tag_and_value(0))
-print(xmlparser.get_values_of_child_node(0))
+# xmlparser = XmlParser("test/dummy.xml")
+# print(xmlparser.extract_elements_data())
