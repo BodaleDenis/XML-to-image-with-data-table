@@ -1,5 +1,5 @@
 import sys
-from os import path
+import os
 
 sys.path.append("./")
 from XmlParser import XmlParser
@@ -43,8 +43,9 @@ class TableGenerator:
         table_cells = dict(values=table_data)
         table = plotly_graph.Table(header=table_header, cells=table_cells)
         figure = plotly_graph.Figure(data=[table])
-
-        return figure.show()
+        if not os.path.exists("images"):
+            os.mkdir("images")
+        figure.write_image("images/fig1.png")
 
 
 table = TableGenerator("test/dummy.xml")
